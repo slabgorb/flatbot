@@ -1,1 +1,1 @@
-web: bin/hubot -a flowdock -n flatbot
+flatbot: bin/hubot -a flowdock -n flatbot
