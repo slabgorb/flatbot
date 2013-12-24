@@ -23,5 +23,6 @@
 "isup.coffee",
 "kittens.coffee",
 "lmgtfy.coffee",
+"pandorabot.coffee",
 "redis-brain.coffee",
 "shipit.coffee"]
