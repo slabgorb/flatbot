@@ -32,6 +32,11 @@ module.exports = (robot) ->
         switch res.statusCode
           when 200
             [_, response] = xml.match "<that>(.+?)</that>"
+            response = response.replace /&quot;/g, '"'
+            response = response.replace /&amp;/g, '&'
+            response = response.replace /&apos;/g, "'"
+            response = response.replace /&lt;/g, '<'
+            response = response.replace /&gt;/g, '>'
             msg.reply response
           else
             msg.reply "I am too sleepy to chat."
