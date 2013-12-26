@@ -31,7 +31,10 @@ module.exports = (robot) ->
     req.post(data) (err, res, xml) ->
         switch res.statusCode
           when 200
-            [_, response] = xml.match "<that>(.+?)</that>"
+            try
+              [_, response] = xml.match "<that>(.+?)</that>"
+            catch error
+              response = "ERROR - Does not compute."
             response = response.replace /&quot;/g, '"'
             response = response.replace /&amp;/g, '&'
             response = response.replace /&apos;/g, "'"
