@@ -1,16 +1,16 @@
-# Hubot
+# Flatbot
 
-This is a version of GitHub's Campfire bot, hubot. He's pretty cool.
+This is a version of GitHub's Campfire bot, hubot, customized for Flat World Knowledge.
 
-This version is designed to be deployed on [Heroku][heroku]. This README was generated for you by hubot to help get you started. Definitely update and improve to talk about your own instance, how to use and deploy, what functionality he has, etc!
+This version is designed to be deployed on [Heroku][heroku]. Flatbot is on heroku at http://flatbot.herokuapp.com/ but you won't find any web presence.
 
 [heroku]: http://www.heroku.com
 
-### Testing Hubot Locally
+### Testing Flatbot Locally
 
-You can test your hubot by running the following.
+You can test flatbot by running the following. Note that we use the Flowdock adapter.
 
-    % bin/hubot
+    % bin/hubot -a flowdock -n flatbot
 
 You'll see some start up output about where your scripts come from and a
 prompt.
@@ -20,9 +20,9 @@ prompt.
     [Sun, 04 Dec 2011 18:41:11 GMT] INFO Loading scripts from /home/tomb/Development/hubot/src/scripts
     Hubot>
 
-Then you can interact with hubot by typing `hubot help`.
+Then you can interact with flatbot by typing `flatbot help`.
 
-    Hubot> hubot help
+    Hubot> flatbot help
 
     Hubot> animate me <query> - The same thing as `image me`, except adds a few
     convert me <expression> to <units> - Convert expression to given units.
@@ -34,7 +34,7 @@ Then you can interact with hubot by typing `hubot help`.
 
 Take a look at the scripts in the `./scripts` folder for examples.
 Delete any scripts you think are useless or boring.  Add whatever functionality you
-want hubot to have. Read up on what you can do with hubot in the [Scripting Guide](https://github.com/github/hubot/blob/master/docs/scripting.md).
+want flatbot to have. Read up on what you can do with hubot in the [Scripting Guide](https://github.com/github/hubot/blob/master/docs/scripting.md).
 
 ### Redis Persistence
 
@@ -51,25 +51,7 @@ about redis at all.
 
 [redistogo]: https://redistogo.com/
 
-## Adapters
-
-Adapters are the interface to the service you want your hubot to run on. This
-can be something like Campfire or IRC. There are a number of third party
-adapters that the community have contributed. Check
-[Hubot Adapters][hubot-adapters] for the available ones.
-
-If you would like to run a non-Campfire or shell adapter you will need to add
-the adapter package as a dependency to the `package.json` file in the
-`dependencies` section.
-
-Once you've added the dependency and run `npm install` to install it you can
-then run hubot with the adapter.
-
-    % bin/hubot -a <adapter>
-
-Where `<adapter>` is the name of your adapter without the `hubot-` prefix.
-
-[hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
+We use the persistence with Flatbot (why not?), so you'll need to run a redis-server locally if you want to test locally.
 
 ## hubot-scripts
 
@@ -100,56 +82,24 @@ name as a double quoted string to the `external-scripts.json` file in this repo.
 
 ## Deployment
 
-    % heroku create --stack cedar
+You'll need to have access to the flatbot heroku instance, and add it as a remote:
+
+    % heroku git:remote -a flatbot
+
+Then:
+
     % git push heroku master
-    % heroku ps:scale app=1
-
-If your Heroku account has been verified you can run the following to enable
-and add the Redis to Go addon to your app.
-
-    % heroku addons:add redistogo:nano
+    % heroku ps:scale web=1
 
 If you run into any problems, checkout Heroku's [docs][heroku-node-docs].
 
-You'll need to edit the `Procfile` to set the name of your hubot.
-
 More detailed documentation can be found on the
 [deploying hubot onto Heroku][deploy-heroku] wiki page.
-
-### Deploying to UNIX or Windows
-
-If you would like to deploy to either a UNIX operating system or Windows.
-Please check out the [deploying hubot onto UNIX][deploy-unix] and
-[deploying hubot onto Windows][deploy-windows] wiki pages.
 
 [heroku-node-docs]: http://devcenter.heroku.com/articles/node-js
 [deploy-heroku]: https://github.com/github/hubot/blob/master/docs/deploying/heroku.md
 [deploy-unix]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
 [deploy-windows]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
-
-## Campfire Variables
-
-If you are using the Campfire adapter you will need to set some environment
-variables. Refer to the documentation for other adapters and the configuraiton
-of those, links to the adapters can be found on [Hubot Adapters][hubot-adapters].
-
-Create a separate Campfire user for your bot and get their token from the web
-UI.
-
-    % heroku config:add HUBOT_CAMPFIRE_TOKEN="..."
-
-Get the numeric IDs of the rooms you want the bot to join, comma delimited. If
-you want the bot to connect to `https://mysubdomain.campfirenow.com/room/42` 
-and `https://mysubdomain.campfirenow.com/room/1024` then you'd add it like this:
-
-    % heroku config:add HUBOT_CAMPFIRE_ROOMS="42,1024"
-
-Add the subdomain hubot should connect to. If you web URL looks like
-`http://mysubdomain.campfirenow.com` then you'd add it like this:
-
-    % heroku config:add HUBOT_CAMPFIRE_ACCOUNT="mysubdomain"
-
-[hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
 
 ## Restart the bot
 
