@@ -15,4 +15,4 @@ module.exports = (robot) ->
   robot.respond /fact me/i, (msg) ->
     msg.http("http://mentalfloss.com/api/1.0/views/amazing_facts.json")
       .get() (err, res, body) ->
-        msg.send JSON.parse(body)[0].nid.replace /<\/?p>/g, ""
+        msg.send JSON.parse(body)[0].nid.replace /<(?:.|\n)*?>/g, ""
