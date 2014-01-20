@@ -10,9 +10,9 @@ This version is designed to be deployed on [Heroku][heroku]. Flatbot is on herok
 
 You will need to install Redis (http://jasdeep.ca/2012/05/installing-redis-on-mac-os-x/) before you can run Flatbot locally. Some local
 
-   export HUBOT_FLOWDOCK_LOGIN_EMAIL=kavery@fwk.com
-   export HUBOT_AUTH_ADMIN=kavery@fwk.com 
-   export HUBOT_FLOWDOCK_LOGIN_PASSWORD=pepper123  
+    export HUBOT_FLOWDOCK_LOGIN_EMAIL=kavery@fwk.com
+    export HUBOT_AUTH_ADMIN=kavery@fwk.com 
+    export HUBOT_FLOWDOCK_LOGIN_PASSWORD=pepper123  
 
 You can test flatbot by running the following. Note that we use the Flowdock adapter.
 
