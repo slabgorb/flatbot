@@ -2,7 +2,7 @@
 #   Fortune command from Gigaset Fortune-RSS generator
 #
 # Dependencies:
-#   None
+#   ent
 #
 # Configuration:
 #   None
@@ -11,6 +11,8 @@
 #   hubot fortune me
 #   hubot cookie me
 #
+# Author:
+# slabgorb@gmail.com
 ent = require 'ent'
 module.exports = (robot) ->
 
