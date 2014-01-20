@@ -8,6 +8,8 @@ This version is designed to be deployed on [Heroku][heroku]. Flatbot is on herok
 
 ### Testing Flatbot Locally
 
+You will need to install Redis (http://jasdeep.ca/2012/05/installing-redis-on-mac-os-x/) before you can run Flatbot locally.
+
 You can test flatbot by running the following. Note that we use the Flowdock adapter.
 
     % bin/hubot -a flowdock -n flatbot
